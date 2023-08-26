@@ -1,5 +1,7 @@
 # Capstone Option 1: Full-Stack Banking Application
 
+![bank-services-concept.jpg](Pics%2Fbank-services-concept.jpg)
+
 ## Choosing A Capstone Project:
 
 You can **choose** between **two options** for your **capstone project**:

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-bootstrap-table-next": "^1.1.0",
+    "react-bootstrap-table2-paginator": "^2.1.2"
+  }
+}
