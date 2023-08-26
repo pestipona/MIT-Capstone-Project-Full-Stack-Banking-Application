@@ -49,3 +49,24 @@ You are **encouraged** to **develop additional features** for your **app**. You 
 
 ### Grading Your Application:
 
+Your **application** will be **evaluated** in a **manner similar** to **user acceptance testing (UAT)**. The **grading team** will **access your site** as **users** and **confirm** that the **following functionalities** are **working**:
+
+* **Create an account** with an **email address** and **password**
+  * A **success message** is **received** upon **account creation**
+  * The **email address** or **username appears** at the **top right corner** when **logged in**
+* **Log in** to the **account**
+  * The **user can log in** with an **email address**, **password**, or **OAuth2 authentication** 
+  * The **user can log out** of the **account**
+* **Deposit**
+  * The **user** can **deposit money**
+  * The **balance updates** according to the **deposit**
+  * **Information persists** across **logins**
+* **Withdraw**
+  * The **user** can **withdraw money**
+  * The **balance updates** according to the **withdrawal**
+  * **Information persists** across **logins**
+* **Database**
+  * You will **submit a screenshot** of **user information** in your **database** as **additional support** that your **database** is **working**.
+
+## Presentation Requirements:
+
