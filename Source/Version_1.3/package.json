@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "-": "^0.0.1",
+    "http": "^0.0.1-security",
+    "http-server": "^14.1.1",
+    "server": "^1.0.38"
+  }
+}

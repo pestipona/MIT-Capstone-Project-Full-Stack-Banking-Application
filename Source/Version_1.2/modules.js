@@ -3,7 +3,7 @@ var ui = {};
 // module for navigation bar
 ui.navigation = `
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#" onclick="defaultModule()">BadBank</a>
+        <a class="navbar-brand" href="#" onclick="defaultModule()">AFCU</a>
         <button
             class="navbar-toggler"
             type="button"
@@ -121,12 +121,12 @@ ui.balance = `
 
 // module for default
 ui.default = `
-    <div class="card bg-light mb-3" style="max-width: 18rem;">
-      <div class="card-header">BadBank Landing Module</div>
+    <div class="card bg-light mb-3" style="max-width: 60rem;">
+      <div class="card-header">Our History</div>
       <div class="card-body">
-        <h5 class="card-title">Welcome to the Bank</h5>
-        <p class="card-text">You can move around using the navigation bar.</p>
-        <img src="bank.png" class="img-fluid" alt="Responsive image">
+        <h5 class="card-title">Army Federal Credit Union</h5>
+        <p class="card-text">Founded in 2013 in Columbia, SC, the Army Federal Credit Union has since etched a remarkable history of dedicated service. With a mission to cater exclusively to service members, it emerged as a beacon of financial stability and support for military personnel. From its humble origins, the credit union rapidly expanded its reach, offering a spectrum of high-quality banking services tailored to the unique needs of servicemen and women. Through unwavering commitment and a customer-centric approach, the Army Federal Credit Union has not only established itself as a trusted financial institution but has also played a pivotal role in enhancing the financial well-being of those who serve their country.</p>
+        <img src="./Photos/iStock-Stock_bank-XL.jpg" class="img-fluid" alt="Responsive image">
       </div>
   </div>
 `;
@@ -172,7 +172,7 @@ var loadAllData = function () {
 
 var defaultModule = function () {
     target.innerHTML = ui.default;
-    title.innerHTML = "Bad Bank";
+    title.innerHTML = "AFCU Bank";
 }
 
 defaultModule();
