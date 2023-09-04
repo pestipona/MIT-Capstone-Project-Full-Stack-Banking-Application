@@ -1,6 +1,6 @@
 # Capstone Option 1: Full-Stack Banking Application
 
-![bank-services-concept.jpg](..%2FPics%2Fbank-services-concept.jpg)
+![MIT Emeritus.jpg](..%2FPics%2FMIT%20Emeritus.jpg)
 
 ## Choosing A Capstone Project:
 
