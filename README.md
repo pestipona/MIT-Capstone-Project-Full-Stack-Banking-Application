@@ -2,6 +2,24 @@
 
 ![iStock-stock market.jpg](Pics%2FiStock-stock%20market.jpg)
 
+## Description:
+
+???
+
+## Installation Guidelines:
+
+??? (Screenshots)
+
+## Technology Used:
+
+???
+
+## Features:
+
+???  (Screenshots)
+
+
+
 So, now that **we have** the **files**, let's go ahead and **run** a **small HTTP server** to look at our **application**. As you can see here, I have that **page opened up** at **npm**, the **npm registry** at https://www.npmjs.com/package/http-server, and the **command to install** is right there before you `npm i http-server`.
 
 ```shell
@@ -14,3 +32,11 @@ When done close server.
 ```shell
 CTRL + C
 ```
+
+## Future Improvements:
+
+???
+
+## License:
+
+???
