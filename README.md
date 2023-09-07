@@ -20,6 +20,7 @@ To build the mongo database first deploy a Linux EC2 instance in AWS. Once this 
 * **Create** a **mongo database** inside a **docker container** called `afcu-bank`
 * Install **mongodb** should be `version 3.6.2` for this exercise to work
 
+To get a more detailed list of steps with commands follow this detailed guide [Building the Database](/Docs/Building_The_Database.md). 
 
 ## Technology Used:
 

@@ -1,4 +1,6 @@
-## SSH into AWS EC2 Instance Database Server
+# Building the Database:
+
+## I. SSH into AWS EC2 Instance Database Server:
 
 Navigate to the Directory with the Private Key. To connect to your EC2 instance, use the ssh command with the following format:
 * **your-private-key.pem:** Replace this with the actual filename of your private key.
@@ -23,7 +25,7 @@ node -v
 npm -v
 ```
 
-## Setup Docker in AWS EC2 Instance Database Server:
+## II. Setup Docker in AWS EC2 Instance Database Server:
 
 Install Docker in EC2 instance
 
@@ -50,7 +52,7 @@ Verify the Docker version to confirm that it has been successfully installed
 docker --version
 ```
 
-## Create MongoDB in Docker Container:
+## III. Create MongoDB in Docker Container:
 
 **Create** a **mongo database** inside a **docker container** called `afcu-bank`
 
@@ -63,3 +65,13 @@ We need to **install** the **mongodb package**. We will enter `npm install mongo
 ```shell
 npm install mongodb@3.6.2
 ```
+
+## IV. Useful Commands to Troubleshoot MongoDB:
+
+* [Useful Docker Commands](/Docs/Docker/I.%20Useful%20Docker%20Commands.md)
+* [Create and Publish a Docker Image](/Docs/Docker/II.%20Create%20and%20Publish%20a%20Docker%20Image.md)
+* [Docker - NodeJS Hello World](/Docs/Docker/III.%20Docker%20-%20NodeJS%20Hello%20World.md)
+* [How to install Docker On Ubuntu](/Docs/Docker/IV.%20How%20to%20install%20Docker%20On%20Ubuntu.md)
+* [Dockerize Multi-Tier Applications](/Docs/Docker/V.%20Dockerize%20Multi-Tier%20Applications.md)
+* [Docker Hub](/Docs/Docker/VI.%20Docker%20Hub.md)
+* [Run Docker Container In The Cloud](/Docs/Docker/VII.%20Run%20Docker%20Container%20In%20The%20Cloud.md)
