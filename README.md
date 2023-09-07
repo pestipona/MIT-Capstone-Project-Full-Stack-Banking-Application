@@ -2,11 +2,11 @@
 
 ![iStock-stock market.jpg](Pics%2FiStock-stock%20market.jpg)
 
-## Description:
+## I. Description:
 
 ???
 
-## Installation Guidelines:
+## II. Installation Guidelines:
 
 This application is fully built, but To replicate this environment on your own follow the build steps outlined below.
 
@@ -22,13 +22,13 @@ To build the mongo database first deploy a Linux EC2 instance in AWS. Once this 
 
 To get a more detailed list of steps with commands follow this detailed guide [Building the Database](/Docs/Building_The_Database.md). 
 
-## Technology Used:
+## III. Technology Used:
 
 ### Mongo Database:
 
 For the **data store** I used an image of **Mongo DB** that I deployed in a **Docker Container** hosted in an **AWS EC2 Instance**. I could have made this **more efficient** by just deploying the **container** itself without the **EC2 instance**, but since I did not have enough time to configure this. I went first with what I knew which was to deploy the **mongo database container** in an **AWS EC2 instance**. This guide proved helpful [How to connect to Mongodb on AWS EC2 instance with Robomongo?](https://setu677.medium.com/how-to-connect-to-mongodb-on-aws-ec2-instance-with-robomongo-b2977b8a112f).
 
-## Features:
+## IV. Features:
 
 ### Using Studio 3T to Monitor MongoDB Container:
 
@@ -36,11 +36,11 @@ The **mongo database** can be monitored **using a connection** via **port 27017*
 
 ![Studio 3T.png](Screen_Shots%2FStudio%203T.png)
 
-## Future Improvements:
+## V. Future Improvements:
 
 For the database I plan to deploy it straight in AWS ECS (Elastic Container Services) as a container. Since currently the mongo db container I have is hosted within an AWS EC2 Instance, and I would like to eliminate the extra stack there with the EC2 instance.
 
-## License:
+## VI. License:
 
 The MIT License (MIT)
 
