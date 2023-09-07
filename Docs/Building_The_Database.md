@@ -1,5 +1,7 @@
 # Building the Database:
 
+![Docker_Hub.jpg](..%2FPics%2FDocker_Hub.jpg)
+
 ## I. SSH into AWS EC2 Instance Database Server:
 
 Navigate to the Directory with the Private Key. To connect to your EC2 instance, use the ssh command with the following format:
