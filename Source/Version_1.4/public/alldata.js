@@ -43,7 +43,10 @@ function AllData() {
                             <td className="text-left">{value.name}</td>
                             <td className="text-left">{value.email}</td>
                             <td className="text-left">{value.password}</td>
-                            <td className="text-left">{`$ ${parseFloat(value.balance).toFixed(2)}`}</td>
+                            <td className="text-left">{`$ ${parseFloat(value.balance).toLocaleString(undefined, {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            })}`}</td>
                         </tr>
                     ))}
                 </tbody>
