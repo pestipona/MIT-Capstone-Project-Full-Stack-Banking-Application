@@ -51,6 +51,12 @@ $ docker rmi -f $(docker images -q)
 $ docker stop <container id>
 ```
 
+### Start container:
+
+```shell
+$ docker start <container id>
+```
+
 ### Shell in running container:
 
 ```shell
