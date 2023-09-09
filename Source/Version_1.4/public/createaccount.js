@@ -9,7 +9,8 @@ function CreateAccount(){
             status={status}
             body={show ?
                 <CreateForm setShow={setShow}/> :
-                <CreateMsg setShow={setShow}/>}
+                <CreateMsg setShow={setShow}/>
+            }
         />
     )
 }
@@ -30,7 +31,10 @@ function CreateForm(props){
     const [balance, setBalance]   = React.useState('');
 
     function handle() {
+
+        // Validation passed, proceed with the fetch
         console.log(name, email, password, balance);
+
         const url = `/account/create/${name}/${email}/${password}/${balance}`;
         (async () => {
             var res = await fetch(url);
@@ -72,6 +76,7 @@ function CreateForm(props){
 
         <button type="submit"
                 className="btn btn-light"
+                disabled={!name && !email && !password}
                 onClick={handle}>Create Account</button>
 
     </>);
