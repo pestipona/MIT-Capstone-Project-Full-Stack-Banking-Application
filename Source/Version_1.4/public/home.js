@@ -1,11 +1,13 @@
 function Home(){
     return (
         <Card
-            txtcolor="black"
-            header="BadBank Landing Module"
-            title="Welcome to the bank"
-            text="You can move around using the navigation bar."
-            body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
+            maxWidth="25rem"
+            bgcolor="dark"
+            txtcolor="white"
+            header="AFCU Bank"
+            title="Armed Forces Credit Union Bank"
+            text="Founded in 2023 we serve our nation's heroes for all their banking needs."
+            body={(<img src="/Pics/iStock-stock%20market.jpg" className="img-fluid" alt="Responsive image"/>)}
         />
     );
 }

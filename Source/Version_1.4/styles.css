@@ -1,0 +1,23 @@
+.nav-highlight {
+  color: blue;
+}
+
+/* CSS Styles */
+.table {
+  color: black; /* Change the text color to red */
+}
+
+.table thead th {
+  color: white; /* Change the header text color to blue */
+}
+
+.table tbody td {
+  color: black; /* Change the body cell text color to green */
+}
+
+Card {
+  margin-left: 20px; /* Adjust the left margin to move the card away from the edge */
+}
+
+
+

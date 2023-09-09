@@ -10,8 +10,13 @@ function Card(props){
         return 'card mb-3 ' + bg + txt;
     }
 
+    function cardWidth() {
+        const width = props.maxWidth ? + props.maxWidth: "18rem";
+        return `${width}`;
+    }
+
     return (
-        <div className={classes()} style={{maxWidth: "18rem"}}>
+        <div className={classes()} style={{maxWidth: cardWidth()}}>
             <div className="card-header">{props.header}</div>
             <div className="card-body">
                 {props.title && (<h5 className="card-title">{props.title}</h5>)}
@@ -19,6 +24,7 @@ function Card(props){
                 {props.body}
                 {props.status && (<div id='createStatus'>{props.status}</div>)}
             </div>
+            <div className="card-footer text-center">© 2023 Copyright: Paul V. Estipona</div>
         </div>
     );
 }

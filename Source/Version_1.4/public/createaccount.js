@@ -28,15 +28,6 @@ function CreateForm(props){
     const [email, setEmail]       = React.useState('');
     const [password, setPassword] = React.useState('');
     const [balance, setBalance]   = React.useState('');
-    //const ctx = React.useContext(UserContext);
-
-    /*
-    function handle(){
-        console.log(name, email, password, balance);
-        ctx.users.push({name, email, password, balance});
-        props.setShow(false);
-    }
-    */
 
     function handle() {
         console.log(name, email, password, balance);
