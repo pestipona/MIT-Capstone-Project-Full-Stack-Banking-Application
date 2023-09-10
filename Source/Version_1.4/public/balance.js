@@ -1,6 +1,7 @@
 function Balance(){
     const [show, setShow]     = React.useState(true);
     const [status, setStatus] = React.useState('');
+    const [balance, setBalance] = React.useState('');
 
     return (
         <Card
@@ -8,16 +9,20 @@ function Balance(){
             header="Balance"
             status={status}
             body={show ?
-                <BalanceForm setShow={setShow} setStatus={setStatus}/> :
-                <BalanceMsg setShow={setShow}/>}
+                <BalanceForm setShow={setShow} setStatus={setStatus} setBalance={setBalance}/> :
+                <BalanceMsg setShow={setShow} balance={balance}/>}
         />
     )
 
 }
 
 function BalanceMsg(props){
+
     return(<>
-        <h5>Success</h5>
+        <h5>Your Current Balance: ${parseFloat(props.balance).toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        })}</h5>
         <button type="submit"
                 className="btn btn-light"
                 onClick={() => props.setShow(true)}>
@@ -27,21 +32,26 @@ function BalanceMsg(props){
 }
 
 function BalanceForm(props){
+
     const [email, setEmail]   = React.useState('');
-    const [balance, setBalance] = React.useState('');
-    const ctx = React.useContext(UserContext);
+    //const [balance, setBalance] = React.useState('');
 
     function handle(){
-        const user = ctx.users.find((user) => user.email == email);
-        if (!user) {
-            props.setStatus('fail!')
-            return;
-        }
 
-        setBalance(user.balance);
-        console.log(user);
-        props.setStatus('Your balance is: ' + user.balance);
-        props.setShow(false);
+        // Validation passed, proceed with the fetch
+        const url = `/account/balance/${email}`;
+        (async () => {
+
+            try {
+                var res = await fetch(url);
+                var user = await res.json();
+                props.setBalance(user.balance);
+                props.setStatus('');
+                props.setShow(false);
+            } catch (error) {
+                props.setShow(false);
+            }
+        })();
     }
 
     return (<>

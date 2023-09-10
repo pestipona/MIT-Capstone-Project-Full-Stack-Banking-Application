@@ -63,7 +63,15 @@ app.get('/account/withdraw/:email/:amount', function (req, res) {
 
 // api endpoint (route) for balance
 app.get('/account/balance/:email', function (req, res) {
-    res.send();
+    // search user
+    dal.balance(req.params.email)
+        // sending back to deposit.js the document from dal.js
+        .then((user) => {
+            res.send(user);
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 })
 
 

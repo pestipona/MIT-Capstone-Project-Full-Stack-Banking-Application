@@ -103,4 +103,29 @@ function withdraw(email, amount) {
     })
 }
 
-module.exports = {create, all, deposit, withdraw};
+// performs a query on the user's balance
+function balance(email) {
+
+    return new Promise(async (resolve, reject) => {
+
+        try {
+            const customers = db.collection('users');
+
+            // Search for the user document by email
+            const user = await customers.findOne({ email });
+
+            if (!user) {
+                reject(new Error('User not found'));
+                return;
+            }
+
+            // Resolve the Promise with the updated user document
+            resolve(user);
+
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+module.exports = {create, all, deposit, withdraw, balance};
