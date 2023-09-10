@@ -12,6 +12,8 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function (err, client) {
 
 // creates a user account
 function create(name, email, password, balance) {
+    // convert string input to float number for storage in database
+    balance = parseFloat(balance);
     return new Promise((resolve, reject) => {
         const collection = db.collection('users');
         const doc = {name, email, password, balance};
@@ -33,4 +35,72 @@ function all() {
     });
 }
 
-module.exports = {create, all};
+// performs a deposit on the user's balance
+function deposit(email, amount) {
+
+    // convert string input to float number for storage in database
+    amount = parseFloat(amount);
+
+    return new Promise(async (resolve, reject) => {
+
+        try {
+            const customers = db.collection('users');
+
+            // Search for the user document by email
+            const user = await customers.findOne({ email });
+
+            if (!user) {
+                reject(new Error('User not found'));
+                return;
+            }
+
+            // Update the user's balance
+            user.balance = parseFloat(user.balance) + amount;
+
+            // Update the document in the collection
+            await customers.updateOne({ email }, { $set: { balance: user.balance } });
+
+            // Resolve the Promise with the updated user document
+            resolve(user);
+
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+// performs a withdrawal on the user's balance
+function withdraw(email, amount) {
+
+    // convert string input to float number for storage in database
+    amount = parseFloat(amount);
+
+    return new Promise(async (resolve, reject) => {
+
+        try {
+            const customers = db.collection('users');
+
+            // Search for the user document by email
+            const user = await customers.findOne({ email });
+
+            if (!user) {
+                reject(new Error('User not found'));
+                return;
+            }
+
+            // Update the user's balance
+            user.balance = parseFloat(user.balance) - amount;
+
+            // Update the document in the collection
+            await customers.updateOne({ email }, { $set: { balance: user.balance } });
+
+            // Resolve the Promise with the updated user document
+            resolve(user);
+
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+module.exports = {create, all, deposit, withdraw};

@@ -35,17 +35,34 @@ app.get('/account/all', function (req, res) {
 });
 
 // api endpoint (route) for deposit
-app.get('/account/deposit', function (req, res) {
-    res.send();
+app.get('/account/deposit/:email/:amount', function (req, res) {
+
+    // search user
+    dal.deposit(req.params.email, req.params.amount)
+        // sending back to deposit.js the document from dal.js
+        .then((user) => {
+            res.send(user);
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 })
 
 // api endpoint (route) for withdraw
-app.get('/account/withdraw', function (req, res) {
-    res.send();
+app.get('/account/withdraw/:email/:amount', function (req, res) {
+    // search user
+    dal.withdraw(req.params.email, req.params.amount)
+        // sending back to deposit.js the document from dal.js
+        .then((user) => {
+            res.send(user);
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 })
 
 // api endpoint (route) for balance
-app.get('/account/balance', function (req, res) {
+app.get('/account/balance/:email', function (req, res) {
     res.send();
 })
 
