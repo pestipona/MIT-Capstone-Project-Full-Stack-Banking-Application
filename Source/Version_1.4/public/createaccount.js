@@ -23,8 +23,8 @@ function CreateAccount(){
             header="Create Account"
             status={status}
             body={show ?
-                <CreateForm setShow={setShow}/> :
-                <CreateMsg setShow={setShow}/>
+                <CreateForm setShow={setShow} setStatus={setStatus}/> :
+                <CreateMsg setShow={setShow} setStatus={setStatus}/>
             }
         />
     )
@@ -40,12 +40,16 @@ function CreateMsg(props){
 }
 
 function CreateForm(props){
+
     const [name, setName]         = React.useState('');
     const [email, setEmail]       = React.useState('');
     const [password, setPassword] = React.useState('');
     const [balance, setBalance]   = React.useState('');
 
     function handle() {
+
+        // Clearing the status when attempting to create again
+        props.setStatus('');
 
         // Validation passed, proceed with the fetch
         console.log(name, email, password, balance);

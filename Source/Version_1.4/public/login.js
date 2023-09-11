@@ -25,20 +25,28 @@ function Login(){
             status={status}
             body={show ?
                 <LoginForm setShow={setShow} setStatus={setStatus}/> :
-                <LoginMsg setShow={setShow} setStatus={setStatus}/>}
+                <LogoutForm setShow={setShow} setStatus={setStatus}/>}
         />
     )
 }
 
-function LoginMsg(props){
+function LogoutForm(props){
+
+    function handle() {
+        //Uses the Firebase Authentication service to sign out the currently authenticated user
+        firebase.auth().signOut();
+        props.setShow(true)
+    }
+
+
     return(<>
 
         <h6>Logged in successfully</h6>
-        <button type="submit"
+
+        <button id="logout"
+                type="submit"
                 className="btn btn-light"
-                onClick={() => props.setShow(true)}>
-            Ok
-        </button>
+                onClick={handle}>Log Out</button>
     </>);
 }
 
