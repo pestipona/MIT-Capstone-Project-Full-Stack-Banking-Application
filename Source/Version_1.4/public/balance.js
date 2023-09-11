@@ -34,7 +34,6 @@ function BalanceMsg(props){
 function BalanceForm(props){
 
     const [email, setEmail]   = React.useState('');
-    //const [balance, setBalance] = React.useState('');
 
     function handle(){
 

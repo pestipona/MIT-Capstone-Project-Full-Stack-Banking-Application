@@ -1,3 +1,18 @@
+// Web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+    apiKey: "AIzaSyAqHp7YUuLlUXKGTgJ5_r_kxjn93iVEKeI",
+    authDomain: "afcu-bank-2b374.firebaseapp.com",
+    projectId: "afcu-bank-2b374",
+    storageBucket: "afcu-bank-2b374.appspot.com",
+    messagingSenderId: "473035458107",
+    appId: "1:473035458107:web:66a43b1fa42b99efa33e1e",
+    measurementId: "G-X3VTNHS4RC"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 function CreateAccount(){
     const [show, setShow]     = React.useState(true);
     const [status, setStatus] = React.useState('');
@@ -35,13 +50,29 @@ function CreateForm(props){
         // Validation passed, proceed with the fetch
         console.log(name, email, password, balance);
 
-        const url = `/account/create/${name}/${email}/${password}/${balance}`;
-        (async () => {
-            var res = await fetch(url);
-            var data = await res.json();
-            console.log(data);
-        })();
-        props.setShow(false);
+        // This attempts to create the user in firebase using the provided email and password.
+        // The method createUserWithEmailAndPassword returns a promise.
+        // If the creation is successful, the promise resolves; if not, it rejects.
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+
+                // create entry in mongoDB
+                const url = `/account/create/${name}/${email}/${password}/${balance}`;
+                (async () => {
+                    var res = await fetch(url);
+                    var data = await res.json();
+                    console.log(data);
+                })();
+
+                // creation successful, update the UI accordingly
+                // props.setStatus('Logged in successfully');
+                props.setShow(false);
+            })
+            .catch((error) => {
+                // Handle errors here, such as displaying a message to the user
+                console.error('Error logging in: ', error.message);
+                props.setStatus(error.message);
+            });
     }
 
     return (<>
