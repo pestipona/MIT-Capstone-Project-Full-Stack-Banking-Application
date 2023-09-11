@@ -12,6 +12,8 @@ This application is fully built, but To replicate this environment on your own f
 
 ### II.I. Frontend:
 
+For the **front-end authentication** I used Google's **Firebase** Authentication Service. I signed up for a Google Firebase account, and started by creating a project. Once I have the project setup, I then built the authentication service. To use the service I just imported the SDK and authentication library in my main `index.html` file, and copy-pasted my firebase configuration in my JavaScript file.
+
 ### II.II. Backend (Web Server):
 
 ### II.III. Mongo Database:
@@ -30,7 +32,13 @@ To get a more detailed list of steps with commands follow this detailed guide [B
 
 ### III.I. Frontend:
 
+To build the front-end web page I used HTMl, CSS and JavaScript. To be more specific I built the web components using JavaScript with JavaScript Syntax Extension (JSX) wo embed some 
+
+For **user authentication** this consisted of two parts, the first being the **front-end authentication**, and the second part is the **server routes authentication** in the back-end. The technology I used to build both authentications is **Google's Firebase Authentication Service**.
+
 ### III.II. Backend (Web Server):
+
+For the **server routes authentication** in the back-end. The technology I used to build these authentications is **Google's Firebase Authentication Service**.
 
 ### III.III. Mongo Database:
 
