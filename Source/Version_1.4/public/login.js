@@ -38,7 +38,6 @@ function LogoutForm(props){
         props.setShow(true)
     }
 
-
     return(<>
 
         <h6>Logged in successfully</h6>

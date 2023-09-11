@@ -1,18 +1,36 @@
-
 function AllData() {
+
     // Initialize state to store the fetched data
     const [data, setData] = React.useState([]);
 
     // Use useEffect to fetch data when the component mounts
     React.useEffect(() => {
-        // Make a GET request to the API endpoint
-        fetch('/account/all')
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                // Set the fetched data in the component's state
-                setData(result);
-            });
+
+        async function fetchData() {
+
+            // Get the current user's Firebase ID token.
+            const user = firebase.auth().currentUser;
+            let idToken = null;
+            if (user) {
+                idToken = await user.getIdToken(true);  // The true flag forces a refresh of the token.
+            }
+
+            // Attach the ID token to the request headers.
+            const headers = new Headers();
+            if (idToken) {
+                headers.append('Authorization', 'Bearer ' + idToken);
+            }
+
+            // Make a GET request to the API endpoint with headers
+            fetch('/account/all', { headers: headers })
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result);
+                    // Set the fetched data in the component's state
+                    setData(result);
+                });
+        }
+
     }, []);  // The empty dependency array ensures this effect runs once on mount
 
     return(<>
