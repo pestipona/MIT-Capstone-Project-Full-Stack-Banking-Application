@@ -19,25 +19,21 @@ function LogoutMsg(props){
 
     return(<>
         <h6>Successfully Logged Out!</h6>
-        <button type="submit"
-                className="btn btn-light"
-                onClick={() => props.setShow(true)}>
-            Ok
-        </button>
     </>);
 }
 
 function LogoutForm(props){
 
     function handle(){
+
         //Uses the Firebase Authentication service to sign out the currently authenticated user
         firebase.auth().signOut();
-        props.setShow(true)
+        props.setShow(false);
     }
 
     return (<>
 
-        <h6>Thank You for Banking!</h6>
+        <h6>Press button to confirm</h6>
 
         <button id="logout"
                 type="submit"
