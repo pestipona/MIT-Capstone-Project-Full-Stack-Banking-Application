@@ -49,6 +49,16 @@ app.get('/account/login/:email/:password', function (req, res) {
     });
 });
 
+// secure api endpoint (route) to logout of authentication
+// This route is protected, and req.user contains the authenticated user's information
+app.get('/account/logout', function (req, res) {
+
+    res.send({
+        email:    req.params.email,
+        password: req.params.password
+    });
+});
+
 // secure api endpoint (route) for get all accounts
 // This route is protected, and req.user contains the authenticated user's information
 app.get('/account/all', authenticate, function (req, res) {

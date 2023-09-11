@@ -1,6 +1,6 @@
 // Web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyAqHp7YUuLlUXKGTgJ5_r_kxjn93iVEKeI",
     authDomain: "afcu-bank-2b374.firebaseapp.com",
     projectId: "afcu-bank-2b374",
@@ -25,27 +25,20 @@ function Login(){
             status={status}
             body={show ?
                 <LoginForm setShow={setShow} setStatus={setStatus}/> :
-                <LogoutForm setShow={setShow} setStatus={setStatus}/>}
+                <LoginMsg setShow={setShow} setStatus={setStatus}/>}
         />
     )
 }
 
-function LogoutForm(props){
-
-    function handle() {
-        //Uses the Firebase Authentication service to sign out the currently authenticated user
-        firebase.auth().signOut();
-        props.setShow(true)
-    }
+function LoginMsg(props){
 
     return(<>
-
-        <h6>Logged in successfully</h6>
-
-        <button id="logout"
-                type="submit"
+        <h5>Success</h5>
+        <button type="submit"
                 className="btn btn-light"
-                onClick={handle}>Log Out</button>
+                onClick={() => props.setShow(true)}>
+            Done
+        </button>
     </>);
 }
 
@@ -62,7 +55,7 @@ function LoginForm(props){
         // This attempts to authenticate the user in firebase using the provided email and password.
         // The method signInWithEmailAndPassword returns a promise.
         // If the sign-in is successful, the promise resolves; if not, it rejects.
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(String(email), String(password))
             .then((userCredential) => {
                 // Sign in successful, update the UI accordingly
                 // props.setStatus('Logged in successfully');
