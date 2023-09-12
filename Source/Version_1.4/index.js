@@ -10,26 +10,28 @@ app.use(express.static('public'));
 app.use(cors());
 
 /*
-// Middleware to verify Firebase Authentication token
-const authenticate = async (req, res, next) => {
-    const { authorization } = req.headers;
-
-    if (!authorization || !authorization.startsWith('Bearer ')) {
-        return res.status(403).json({ error: 'Unauthorized' });
-    }
-
-    const idToken = authorization.split('Bearer ')[1];
-
-    try {
-        const decodedToken = await admin.auth().verifyIdToken(idToken);
-        req.user = decodedToken;
-        next(); // Continue to the protected route
-
-    } catch (error) {
-        return res.status(403).json({ error: 'Unauthorized' });
+// Middleware to verify JWT token
+const verifyToken = (req, res, next) => {
+    const authorizationHeader = req.headers['authorization'];
+    if (typeof authorizationHeader !== 'undefined') {
+        const token = authorizationHeader.split(' ')[1]; // Get the token from the Authorization header
+        admin.auth().verifyIdToken(token)
+            .then(decodedToken => {
+                // Token is valid, and decodedToken contains user information
+                req.user = decodedToken;
+                next(); // Proceed to the next middleware (i.e., route handler)
+            })
+            .catch(error => {
+                // Token verification failed
+                res.status(401).json({ error: 'Unauthorized' });
+            });
+    } else {
+        // No token provided in the headers
+        res.status(401).json({ error: 'Unauthorized' });
     }
 };
-*/
+ */
+
 
 // open api endpoint (route) for creating a user account
 app.get('/account/create/:name/:email/:password/:balance', function (req, res) {
@@ -67,12 +69,9 @@ app.get('/account/all', function (req, res) {
 
     // read token from header
     const idToken = req.headers.authorization
-    console.log('received header token:', idToken);
 
     admin.auth().verifyIdToken(idToken)
         .then(function (decodedToken) {
-
-            console.log('decodedToken:',decodedToken);
 
             // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
             dal.all().
@@ -101,6 +100,7 @@ app.get('/account/deposit/:email/:amount', function (req, res) {
         .catch((error) => {
             res.send(error);
         });
+
 })
 
 // secure api endpoint (route) for withdraw

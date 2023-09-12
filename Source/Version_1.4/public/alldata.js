@@ -23,7 +23,6 @@ function AllData() {
 
             try {
                 const idToken = await firebase.auth().currentUser.getIdToken();
-                console.log('current user\'s idToken:', idToken);
 
                 let response = await fetch('/account/all', {
                     method: 'GET',

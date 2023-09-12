@@ -32,6 +32,8 @@ To get a more detailed list of steps with commands follow this detailed guide [B
 
 ### III.I. Frontend:
 
+To authenticate with Google Firebase Authentication and then use that authentication to make a call to your API, you would typically use an authentication token (JWT - JSON Web Token). This token is sent to the server on each request, and the server verifies this token using Firebase SDK to ensure the request is coming from an authenticated user.
+
 To build the front-end web page I used HTMl, CSS and JavaScript. To be more specific I built the web components using JavaScript with JavaScript Syntax Extension (JSX) wo embed some 
 
 For **user authentication** this consisted of two parts, the first being the **front-end authentication**, and the second part is the **server routes authentication** in the back-end. The technology I used to build both authentications is **Google's Firebase Authentication Service**.

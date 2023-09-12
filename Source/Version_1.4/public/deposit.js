@@ -42,6 +42,7 @@ function DepositForm(props){
     const [email, setEmail]   = React.useState('');
     const [amount, setAmount] = React.useState('');
 
+
     function handle(){
 
         // Validation passed, proceed with the fetch

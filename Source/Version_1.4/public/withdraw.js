@@ -49,8 +49,8 @@ function WithdrawForm(props){
         (async () => {
 
             try {
-                var res = await fetch(url);
-                var user = await res.json();
+                const res = await fetch(url);
+                const user = await res.json();
                 console.log('Balance Updated Successfully. New Balance: $', user.balance);
                 props.setStatus('');
                 props.setShow(false);
