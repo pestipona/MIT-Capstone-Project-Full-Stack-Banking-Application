@@ -73,7 +73,6 @@ app.get('/account/all', function (req, res) {
             // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
             dal.all().
             then((docs) => {
-                console.log('This is what was returned from dal.js', docs);
                 res.send(docs);
             });
 
