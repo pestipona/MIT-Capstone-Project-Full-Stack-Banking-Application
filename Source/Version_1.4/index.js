@@ -9,7 +9,6 @@ const admin   = require('./admin');
 app.use(express.static('public'));
 app.use(cors());
 
-/*
 // Middleware to verify JWT token
 const verifyToken = (req, res, next) => {
     const authorizationHeader = req.headers['authorization'];
@@ -30,8 +29,6 @@ const verifyToken = (req, res, next) => {
         res.status(401).json({ error: 'Unauthorized' });
     }
 };
- */
-
 
 // open api endpoint (route) for creating a user account
 app.get('/account/create/:name/:email/:password/:balance', function (req, res) {
@@ -89,7 +86,7 @@ app.get('/account/all', function (req, res) {
 
 // secure api endpoint (route) for deposit
 // This route is protected, and req.user contains the authenticated user's information
-app.get('/account/deposit/:email/:amount', function (req, res) {
+app.get('/account/deposit/:email/:amount', verifyToken, function (req, res) {
 
     // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
     dal.deposit(req.params.email, req.params.amount)
@@ -100,7 +97,6 @@ app.get('/account/deposit/:email/:amount', function (req, res) {
         .catch((error) => {
             res.send(error);
         });
-
 })
 
 // secure api endpoint (route) for withdraw
