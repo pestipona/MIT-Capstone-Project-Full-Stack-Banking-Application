@@ -101,7 +101,7 @@ app.get('/account/deposit/:email/:amount', verifyToken, function (req, res) {
 
 // secure api endpoint (route) for withdraw
 // This route is protected, and req.user contains the authenticated user's information
-app.get('/account/withdraw/:email/:amount', function (req, res) {
+app.get('/account/withdraw/:email/:amount', verifyToken, function (req, res) {
 
     // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
     dal.withdraw(req.params.email, req.params.amount)
@@ -116,7 +116,7 @@ app.get('/account/withdraw/:email/:amount', function (req, res) {
 
 // secure api endpoint (route) for balance
 // This route is protected, and req.user contains the authenticated user's information
-app.get('/account/balance/:email', function (req, res) {
+app.get('/account/balance/:email', verifyToken, function (req, res) {
 
     // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
     dal.balance(req.params.email)

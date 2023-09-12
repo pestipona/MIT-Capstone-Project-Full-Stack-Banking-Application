@@ -111,7 +111,7 @@ function DepositForm(props){
                             onClick={handle}>Deposit</button>
                 </>
             ) : (
-                <div>Please log in to access this form.</div>
+                <div>Please log in to access this page.</div>
             )}
         </div>
     );
