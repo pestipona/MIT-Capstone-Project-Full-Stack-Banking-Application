@@ -45,40 +45,72 @@ function BalanceMsg(props){
 
 function BalanceForm(props){
 
-    const [email, setEmail]   = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [errorMessage, setErrorMessage] = React.useState(null);
+    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+    // Check user's authentication status when the component mounts
+    React.useEffect(() => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                setIsAuthenticated(true);
+            } else {
+                setIsAuthenticated(false);
+            }
+        });
+    }, []); // The empty dependency array means this useEffect will run once when the component mounts.
 
     function handle(){
 
-        // Validation passed, proceed with the fetch
-        const url = `/account/balance/${email}`;
-        (async () => {
-
-            try {
-                var res = await fetch(url);
-                var user = await res.json();
-                props.setBalance(user.balance);
-                props.setStatus('');
-                props.setShow(false);
-            } catch (error) {
-                props.setShow(false);
-            }
-        })();
+        // Get the current user
+        const user = firebase.auth().currentUser;
+        if(user) {
+            // Get JWT
+            user.getIdToken(true).then(async (idToken) => {
+                // Include the token in the request headers
+                const url = `/account/balance/${email}`;
+                try {
+                    var res = await fetch(url, {
+                        headers: {
+                            'Authorization': `Bearer ${idToken}`
+                        }
+                    });
+                    var data = await res.json();
+                    props.setBalance(data.balance);
+                    props.setStatus('');
+                    props.setShow(false);
+                } catch (error) {
+                    setErrorMessage(error);
+                    props.setShow(false);
+                }
+            }).catch((error) => {
+                console.error("Error getting the token:", error);
+                setErrorMessage(error);
+            });
+        }
     }
 
-    return (<>
+    return (
+        <div className="container">
+            {errorMessage && (
+                <div className="alert alert-danger" role="alert">{errorMessage}</div>
+            )}
 
-        Email<br/>
-        <input type="input"
-               className="form-control"
-               placeholder="Enter email"
-               value={email}
-               onChange={e => setEmail(e.currentTarget.value)}/><br/>
+            {isAuthenticated ? (
+                <>
+                    Email<br />
+                    <input type="input"
+                           className="form-control"
+                           placeholder="Enter email"
+                           value={email} onChange={e => setEmail(e.currentTarget.value)} /><br />
 
-        <button type="submit"
-                className="btn btn-light"
-                onClick={handle}>
-            Check Balance
-        </button>
-
-    </>);
+                    <button type="submit"
+                            className="btn btn-light"
+                            onClick={handle}>Check Balance</button>
+                </>
+            ) : (
+                <div>Please log in to access this page.</div>
+            )}
+        </div>
+    );
 }
