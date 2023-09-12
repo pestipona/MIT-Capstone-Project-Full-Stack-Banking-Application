@@ -58,7 +58,11 @@ The **mongo database** can be monitored **using a connection** via **port 27017*
 
 ### V.I. Frontend:
 
-I plan to add a birthdate field and account number that is randomly generated.
+For the front-end portion of the application, there is definitely a lot of room for improvement. Currently, the web page has its core basic function working, but I would like to make the webpage UI more appealing for the users.
+
+Also, more information is needed for each user to identify them which I plan to add such as a birthdate field and account number that is randomly generated.
+
+Aside from additional user information right now there are no user roles and pretty much all users can access every api endpoint once they have created their account and successfully authenticated through Google Firebase authentication service. This is not a good security design since some users should only be able to access `"deposit"`, `"withdraw"`, and `"balance"`; whereas for a user admin would be able to access the `"all data"` table. 
 
 ### V.II. Backend (Web Server):
 
