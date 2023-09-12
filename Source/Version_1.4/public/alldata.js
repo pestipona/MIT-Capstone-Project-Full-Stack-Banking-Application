@@ -57,6 +57,7 @@ function AllData() {
                 <div className="alert alert-danger" role="alert">{errorMessage}</div>
             ) : (
                 <>
+                    {/* If there is NO error message display the table */}
                     <h1 className="text text-primary text-center">Armed Forces Credit Union Bank Data</h1>
                     <h6 className="text text-primary text-center">User Account Information</h6>
                     <table className="table table-striped table-bordered">
