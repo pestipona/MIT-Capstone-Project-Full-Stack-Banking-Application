@@ -57,7 +57,7 @@ function CreateForm(props){
         // This attempts to create the user in firebase using the provided email and password.
         // The method createUserWithEmailAndPassword returns a promise.
         // If the creation is successful, the promise resolves; if not, it rejects.
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(String(email), String(password))
             .then((userCredential) => {
 
                 // create entry in mongoDB

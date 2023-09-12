@@ -9,6 +9,7 @@ const admin   = require('./admin');
 app.use(express.static('public'));
 app.use(cors());
 
+/*
 // Middleware to verify Firebase Authentication token
 const authenticate = async (req, res, next) => {
     const { authorization } = req.headers;
@@ -28,6 +29,7 @@ const authenticate = async (req, res, next) => {
         return res.status(403).json({ error: 'Unauthorized' });
     }
 };
+*/
 
 // open api endpoint (route) for creating a user account
 app.get('/account/create/:name/:email/:password/:balance', function (req, res) {
@@ -61,19 +63,34 @@ app.get('/account/logout', function (req, res) {
 
 // secure api endpoint (route) for get all accounts
 // This route is protected, and req.user contains the authenticated user's information
-app.get('/account/all', authenticate, function (req, res) {
+app.get('/account/all', function (req, res) {
 
-    // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
-    dal.all().
-        then((docs) => {
-            console.log(docs);
-            res.send(docs);
+    // read token from header
+    const idToken = req.headers.authorization
+    console.log('received header token:', idToken);
+
+    admin.auth().verifyIdToken(idToken)
+        .then(function (decodedToken) {
+
+            console.log('decodedToken:',decodedToken);
+
+            // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
+            dal.all().
+            then((docs) => {
+                console.log('This is what was returned from dal.js', docs);
+                res.send(docs);
+            });
+
+        }).catch(function (error) {
+            console.log('error:', error);
+            res.send('Authentication Fail!');
     });
+
 });
 
 // secure api endpoint (route) for deposit
 // This route is protected, and req.user contains the authenticated user's information
-app.get('/account/deposit/:email/:amount', authenticate, function (req, res) {
+app.get('/account/deposit/:email/:amount', function (req, res) {
 
     // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
     dal.deposit(req.params.email, req.params.amount)
@@ -88,7 +105,7 @@ app.get('/account/deposit/:email/:amount', authenticate, function (req, res) {
 
 // secure api endpoint (route) for withdraw
 // This route is protected, and req.user contains the authenticated user's information
-app.get('/account/withdraw/:email/:amount', authenticate, function (req, res) {
+app.get('/account/withdraw/:email/:amount', function (req, res) {
 
     // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
     dal.withdraw(req.params.email, req.params.amount)
@@ -103,7 +120,7 @@ app.get('/account/withdraw/:email/:amount', authenticate, function (req, res) {
 
 // secure api endpoint (route) for balance
 // This route is protected, and req.user contains the authenticated user's information
-app.get('/account/balance/:email', authenticate, function (req, res) {
+app.get('/account/balance/:email', function (req, res) {
 
     // This makes a call to the data abstraction layer (dal) that interfaces with the mongoDB
     dal.balance(req.params.email)
