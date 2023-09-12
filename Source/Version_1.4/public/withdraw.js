@@ -1,3 +1,15 @@
+// Web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+    apiKey: "AIzaSyAqHp7YUuLlUXKGTgJ5_r_kxjn93iVEKeI",
+    authDomain: "afcu-bank-2b374.firebaseapp.com",
+    projectId: "afcu-bank-2b374",
+    storageBucket: "afcu-bank-2b374.appspot.com",
+    messagingSenderId: "473035458107",
+    appId: "1:473035458107:web:66a43b1fa42b99efa33e1e",
+    measurementId: "G-X3VTNHS4RC"
+};
+
 function Withdraw(){
     const [show, setShow]     = React.useState(true);
     const [status, setStatus] = React.useState('');
