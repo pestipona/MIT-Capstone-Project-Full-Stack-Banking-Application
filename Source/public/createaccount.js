@@ -68,8 +68,16 @@ function CreateForm(props){
                     console.log(data);
                 })();
 
+                // Log out the user after successful account creation
+                firebase.auth().signOut().then(() => {
+                    console.log('User signed out after account creation');
+                    props.setStatus('Account created successfully, but you are not logged in.');
+                }).catch((error) => {
+                    console.error('Error signing out after account creation:', error);
+                    props.setStatus('Account created, but encountered an error during sign out.');
+                });
+
                 // creation successful, update the UI accordingly
-                // props.setStatus('Logged in successfully');
                 props.setShow(false);
             })
             .catch((error) => {
