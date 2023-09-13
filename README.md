@@ -14,7 +14,7 @@ It should be noted that this application is **not meant** to be for **commercial
 
 ## II. Installation Guidelines:
 
-This is a **full-stack web application**. There are two ways to **install** this **application**, the **first-being** the simplest one which is to install this application on your **localhost** machine, and ignore any instructions regarding the cloud. The **second** is to deploy this application to a **Cloud Service Provider** such as via `AWS`, `Azure`, or `Google Cloud`.
+There are two ways to **install** this **application**, the **first-being** the simplest one which is to install this application on your **localhost** machine, and ignore any instructions regarding the cloud. The **second** is to deploy this application to a **Cloud Service Provider** such as via `AWS`, `Azure`, or `Google Cloud`.
 
 ### 2.1. Frontend & Backend (Web Server):
 
