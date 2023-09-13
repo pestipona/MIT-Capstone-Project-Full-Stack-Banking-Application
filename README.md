@@ -32,9 +32,15 @@ To get a more detailed list of steps with commands follow this detailed guide [B
 
 ### 3.1. Frontend:
 
+#### 3.1.1. Front-End Library:
+
 For the **front-end** portion of the **web application** I used the **React Library** to create functional **React Web Components** for the **User Interface (UI)**. These consisted of **decoupled components** each stored in their own **JavaScript** file. These components were written in **JavaScript Syntax Extension (JSX)**, which is using **HTML** tags within **JavaScript version 6** code.
 
+#### 3.1.2. UI Styling:
+
 For **styling** the **web application**. I simply used a **styling framework** called **Bootstrap**. The Bootstrap web page has **pre-defined web components** which a developer can quickly and easily use in developing a web page. Such components I used from Bootstrap were the `Navigation Bar`, `Table`, and `Card` components.
+
+#### 3.1.3. Front-end authentication:
 
 For the **front-end authentication** portion of the **web application**. I used **Google's Firebase Authentication Service**. This is a **free-tier service** where the only requirement is to have a **Google account**. This authentication service works by the **client** requesting for a **Jason Web Token (JWT)** from **Google Firebase** and once authenticated by Google, the **JWT** is passed and can be used to **authenticate** to the **back-end API routes** which are verified using **Firebase SDK** to ensure the request is coming from an **authenticated user**.
 
@@ -42,13 +48,31 @@ For **user authentication** this consisted of two parts, the first being the **f
 
 ### 3.2. Backend (Web Server):
 
-For the **server routes authentication** in the back-end. The technology I used to build these authentications is **Google's Firebase Authentication Service**. This was used to secure the **API routes** from **unauthenticated users**.
+#### 3.2.1. Runtime Environment:
 
-I also used **Express** to run the server.
+For my runtime environment I used `Node.js` that allows me to execute **JavaScript code** on the **server-side** which includes handling I/O operations, working with files, and managing network connections.
+
+#### 3.2.2. Web Application Framework:
+
+For my web application framework, I used `Express` to handle my HTTP requests & responses for the backend server, including routing, and middleware integration. 
+
+#### 3.2.3. Package Manager:
+
+Since I'm using Node.js I used `Node Package Manager (NPM)` to install, manage, and update libraries and packages that are required for the web application and it's dependencies.
+
+#### 3.2.4. Server-Side Authentication:
+
+For **securing** the **API routes** in the **back-end**. The technology I used to build these authentication is **Google's Firebase Authentication Service**. This was used to secure the **API routes** from **unauthenticated users** by verifying their JSON web tokens that they pass from the front-end to the backend routes.
 
 ### 3.3. Mongo Database:
 
+#### 3.3.1. Data Store:
+
 For the **data store** I used an image of **Mongo DB** that I deployed in a **Docker Container** hosted in an **AWS EC2 Instance**. I could have made this **more efficient** by just deploying the **container** itself without the **EC2 instance**, but since I did not have enough time to configure this. I went first with what I knew which was to deploy the **mongo database container** in an **AWS EC2 instance**. This guide proved helpful [How to connect to Mongodb on AWS EC2 instance with Robomongo?](https://setu677.medium.com/how-to-connect-to-mongodb-on-aws-ec2-instance-with-robomongo-b2977b8a112f).
+
+#### 3.3.2. Containerization:
+
+To run my mongodb container, the **docker engine** I used was **Docker**. I installed Docker within my database server to run my mongodb container.
 
 ## IV. Features:
 
