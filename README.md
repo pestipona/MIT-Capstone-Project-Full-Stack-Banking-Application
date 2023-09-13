@@ -120,6 +120,8 @@ The following page displays which is the **home page**, notice that the `Create 
 
 ![Home_Page.png](Screen_Shots%2FHome_Page.png)
 
+### 4.1. Creating an Account:
+
 If you don't have an existing account click on the **Create Account** menu item in the navigation bar to create a new one. Enter the required fields which are `Name`, `email`, `password`, & `starting balance`. Once done click on the `Create Account` button.
 
 ![Create_Account.png](Screen_Shots%2FCreate_Account.png)
@@ -128,6 +130,8 @@ If the Create Account process was successful a **Success Message** will be displ
 
 ![Create_Account_Success.png](Screen_Shots%2FCreate_Account_Success.png)
 
+### 4.2. Logging into an Account:
+
 Once you acknowledge the **Success Message** you would then have to **login** using the **credentials** you provided in the **Crate Account step** and click on the `Login` button.
 
 ![Login.png](Screen_Shots%2FLogin.png)
@@ -135,6 +139,56 @@ Once you acknowledge the **Success Message** you would then have to **login** us
 If the **authentication process** via **Google Firebase** was successful a **Success Message** will be displayed.
 
 ![Login_Success.png](Screen_Shots%2FLogin_Success.png)
+
+After you are able to **successfully login**, you will notice **more options** are now **available** in the **navigation bar** such as `Deposit`, `Withdraw`, `Balance`, and `All Data`.
+
+### 4.3. Making a Deposit:
+
+To make a **Deposit** simply click on the `Deposit` menu button and provide the `email address` of the account and the `deposit amount`.
+
+![Deposit.png](Screen_Shots%2FDeposit.png)
+
+If the **deposit process** was successful a **Success Message** will be displayed.
+
+![Deposit_Success.png](Screen_Shots%2FDeposit_Success.png)
+
+### 4.4. Check Balance:
+
+To **check you balance** click on the `Balance` button on the **Navigation Bar**. Provide the `email address` of the account and click on the `Check Balance` button.
+
+![Check_Balance.png](Screen_Shots%2FCheck_Balance.png)
+
+If the **check balance process** was successful your **balance** will be displayed.
+
+![Check_Balance_Success.png](Screen_Shots%2FCheck_Balance_Success.png)
+
+### 4.4. Make a Withdrawal:
+
+To make a **Withdrawal** simply click on the `Withdraw` menu button and provide the `email address` of the account and the `withdraw amount`.
+
+![Withdraw.png](Screen_Shots%2FWithdraw.png)
+
+If the **withdrawal process** was successful a **Success Message** will be displayed.
+
+![Withdraw_Success.png](Screen_Shots%2FWithdraw_Success.png)
+
+### 4.5. Check All Data:
+
+This step is **usually reserved** for **users** with **higher admin privileges** which is the `All Data` menu option. However, **user roles** have not yet been implemented in the **web application** as is part the application's **future improvements**. 
+
+Click on the `All Data` Button and this will display the documents that were pulled from the MongoDB in the database server, and formatted to be displayed in a Boostrap Table.
+
+![All_Data.png](Screen_Shots%2FAll_Data.png)
+
+### 4.6. Check All Data:
+
+Once you are done with your session, simple click on the `Logout` Button on the top-left corner of the **navigation bar**. A Log Out button will appear to confirm the user's intention to logout.
+
+![Logout.png](Screen_Shots%2FLogout.png)
+
+Once you are successfully logged out, a success message appears. This fully de-authenticates the user from the Google Firebase authentication, notice also the restricted view of the navigation bar which is back to Create Account and Login.
+
+![Logout_Success.png](Screen_Shots%2FLogout_Success.png)
 
 -------------------------------------------------------------------------------
 
@@ -156,7 +210,7 @@ The **mongo database** can be monitored **using a connection** via **port 27017*
 
 For the **front-end portion** of the application, there is definitely a lot of room for improvement. Currently, the web page has its core basic function working, but I would like to make the webpage UI more appealing for the users.
 
-Also, more information is needed for each user to identify them which I plan to add such as a birthdate field and account number that is randomly generated.
+Also, **more user information** is needed for each user to identify them which I plan to add such as a **birthdate** field and **account number** that is randomly generated. **Input Validation** is also a must which has not been fully implemented in the **web forms**.
 
 Aside from additional user information right now there are no **user roles** and pretty much all users can access every api endpoint once they have created their account and successfully authenticated through Google Firebase authentication service. This is not a good security design since some users should only be able to access `"deposit"`, `"withdraw"`, and `"balance"`; whereas for a user admin would be able to access the `"all data"` table. 
 
