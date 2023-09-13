@@ -1,6 +1,6 @@
 # Capstone Option 1: Full-Stack Banking Application
 
-![iStock-stock market.jpg](Pics%2FiStock-stock%20market.jpg)
+![iStock-stock market.jpg](Screen_Shots%2FiStock-stock%20market.jpg)
 
 ## I. Description:
 
@@ -53,7 +53,7 @@ For **styling** the **web application**. I simply used a **styling framework** c
 
 For the **front-end authentication** portion of the **web application**. I used **Google's Firebase Authentication Service**. This is a **free-tier service** where the only requirement is to have a **Google account**. This authentication service works by the **client** requesting for a **Jason Web Token (JWT)** from **Google Firebase** and once authenticated by Google, the **JWT** is passed and can be used to **authenticate** to the **back-end API routes** which are verified using **Firebase SDK** to ensure the request is coming from an **authenticated user**.
 
-![Client-Side_Authentication.jpg](Pics%2FClient-Side_Authentication.jpg)
+![Client-Side_Authentication.jpg](Screen_Shots%2FClient-Side_Authentication.jpg)
 
 ### 3.2. Backend (Web Server):
 
@@ -73,7 +73,7 @@ Since I'm using Node.js I used `Node Package Manager (NPM)` to install, manage, 
 
 For **securing** the **API routes** in the **back-end**. The technology I used to build these authentication is `Google's Firebase Authentication Service`. This was used to secure the **API routes** from **unauthenticated users** by verifying their JSON web tokens that they pass from the front-end to the backend routes.
 
-![Server-Side_Authentication.jpg](Pics%2FServer-Side_Authentication.jpg)
+![Server-Side_Authentication.jpg](Screen_Shots%2FServer-Side_Authentication.jpg)
 
 #### 3.2.5 Reverse Proxy:
 
@@ -89,13 +89,13 @@ For my process manager I used `PM2 (Process Manager 2)` this allows the **Node.j
 
 For the **data store** I used an image of **Mongo DB** that I deployed in a **Docker Container** hosted in an **AWS EC2 Instance**. I could have made this **more efficient** by just deploying the **container** itself without the **EC2 instance**, but since I did not have enough time to configure this. I went first with what I knew which was to deploy the **mongo database container** in an **AWS EC2 instance**. This guide proved helpful [How to connect to Mongodb on AWS EC2 instance with Robomongo?](https://setu677.medium.com/how-to-connect-to-mongodb-on-aws-ec2-instance-with-robomongo-b2977b8a112f).
 
-![MongoDB.jpg](Pics%2FMongoDB.jpg)
+![MongoDB.jpg](Screen_Shots%2FMongoDB.jpg)
 
 #### 3.3.2. Containerization:
 
 To run my mongodb container, the **docker engine** I used was **Docker**. I installed Docker within my database server to run my mongodb container.
 
-![Docker_Hub.jpg](Pics%2FDocker_Hub.jpg)
+![Docker_Hub.jpg](Screen_Shots%2FDocker_Hub.jpg)
 
 ### 3.4. Cloud Services:
 
@@ -109,21 +109,50 @@ I used `Amazon Route 53` for my Domain Name System (DNS) web service and for reg
 
 -------------------------------------------------------------------------------
 
-## IV. Features:
+## IV. How to Use the Application:
 
-### 4.1. Client-Side & Server Side Authentication:
+Once you are able to deploy your application either in the cloud or locally. Open up a web browser of your choice and paste in the following URLs in the address bar.
+
+* http://www.armed-forces-bank.com/ (deployed in the cloud)
+* http://localhost:3000/ (deployed in the localhost)
+
+The following page displays which is the **home page**, notice that the `Create Account` & `Login` Menu items (for existing users) in the navigation bar are only available.
+
+![Home_Page.png](Screen_Shots%2FHome_Page.png)
+
+If you don't have an existing account click on the **Create Account** menu item in the navigation bar to create a new one. Enter the required fields which are `Name`, `email`, `password`, & `starting balance`. Once done click on the `Create Account` button.
+
+![Create_Account.png](Screen_Shots%2FCreate_Account.png)
+
+If the Create Account process was successful a **Success Message** will be displayed.
+
+![Create_Account_Success.png](Screen_Shots%2FCreate_Account_Success.png)
+
+Once you acknowledge the **Success Message** you would then have to **login** using the **credentials** you provided in the **Crate Account step** and click on the `Login` button.
+
+![Login.png](Screen_Shots%2FLogin.png)
+
+If the **authentication process** via **Google Firebase** was successful a **Success Message** will be displayed.
+
+![Login_Success.png](Screen_Shots%2FLogin_Success.png)
+
+-------------------------------------------------------------------------------
+
+## V. Features:
+
+### 5.1. Client-Side & Server Side Authentication:
 
 For **user authentication** this consisted of two parts, the first being the **front-end authentication**, and the second part is the **server routes authentication** in the back-end. This secures both the front-end of the web application as well as access to the API routes in the back-end.
 
-### 4.2. Using Studio 3T to Monitor MongoDB Container:
+### 5.2. Using Studio 3T to Monitor MongoDB Container:
 
 The **mongo database** can be monitored **using a connection** via **port 27017** in **Studio 3T** to monitor the **database contents**.
 
 ![Studio 3T.png](Screen_Shots%2FStudio%203T.png)
 
-## V. Future Improvements:
+## VI Future Improvements:
 
-### 5.1. Frontend:
+### 6.1. Frontend:
 
 For the **front-end portion** of the application, there is definitely a lot of room for improvement. Currently, the web page has its core basic function working, but I would like to make the webpage UI more appealing for the users.
 
@@ -131,17 +160,17 @@ Also, more information is needed for each user to identify them which I plan to 
 
 Aside from additional user information right now there are no **user roles** and pretty much all users can access every api endpoint once they have created their account and successfully authenticated through Google Firebase authentication service. This is not a good security design since some users should only be able to access `"deposit"`, `"withdraw"`, and `"balance"`; whereas for a user admin would be able to access the `"all data"` table. 
 
-### 5.2. Backend (Web Server):
+### 6.2. Backend (Web Server):
 
 For the **back-end server** I plan to deploy this next time in a different architecture such as a **serverless architecture** in **AWS**. Because right now it's currently deployed as a **Single Page Application (SPA)** stored inside an **AWS S3 Bucket**. 
 
-### 5.3. Database:
+### 6.3. Database:
 
 For the **database** I plan to deploy it straight in **AWS ECS (Elastic Container Services)** as a **container**. Since currently the **mongo db container** I have is hosted within an **AWS EC2 Instance**, and I would like to eliminate the redundancy there with the **EC2 instance**.
 
 I also plan to **encrypt sensitive information** in the **database** such as passwords, birthdate, and other PII (Personally Identifiable Information).
 
-## VI. License:
+## VII. License:
 
 The MIT License (MIT)
 
@@ -164,3 +193,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+![MIT Emeritus.jpg](Screen_Shots%2FMIT%20Emeritus.jpg)
