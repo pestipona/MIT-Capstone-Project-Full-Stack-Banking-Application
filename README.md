@@ -4,7 +4,11 @@
 
 ## I. Description:
 
-???
+This project is a **full-stack web application**. It uses some of the **latest technologies** in **web application development**, **cloud computing**, **containerization**, and **networking**. To see a list of all technologies used refer to the **technology section** of this ReadMe.
+
+This **application** is a simple demonstration of a **web based commercial banking application** where a user can create their account, authenticate, perform basic banking transactions (such as deposit, withdraw, and balance check), and view their information.
+
+It should be noted that this application is **not meant** to be for **commercial use**, it is simply used to **demonstrate** the **concept** of how a **full-stack application** works, and how the **different parts** of the **stack** work together from the **front-end**, to the **back-end server**, to the **data store**, and back. It also shows how different technologies work together.
 
 ---------------------------------------------------------------------------
 
@@ -103,9 +107,13 @@ To run my mongodb container, the **docker engine** I used was **Docker**. I inst
 
 For both my **web-server** and **database-server** I deployed both to the cloud by hosting them inside **AWS EC2 Instances**. For the **Amazon Machine Image (AMI)** which is basically a virtual machine I chose the free-tier OS which is **Amazon Linux**, and for its compute resources I chose the free tier CPU which is `t2.micro`, and RAM.
 
+![AWS_EC2.png](Screen_Shots%2FAWS_EC2.png)
+
 #### 3.4.2. AWS Route 53:
 
 I used `Amazon Route 53` for my Domain Name System (DNS) web service and for registering my domain armed-force-bank.com and subdomain www.armed-force-bank.com This cloud service routes incoming web traffic from the public internet to my Hosted Zone. I mapped my registered domain to my web-server's EC2 Instance IP Address, which Nginx will take care of the reverse web proxying.
+
+![Route 53.png](Screen_Shots%2FRoute%2053.png)
 
 -------------------------------------------------------------------------------
 
