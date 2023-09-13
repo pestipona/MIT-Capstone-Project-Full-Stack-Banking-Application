@@ -41,7 +41,7 @@ To get a more detailed list of steps with commands follow this detailed guide [B
 
 -------------------------------------------------------------------------------------
 
-## III. Technology Used:
+## III. Technologies Used:
 
 ### 3.1. Frontend:
 
