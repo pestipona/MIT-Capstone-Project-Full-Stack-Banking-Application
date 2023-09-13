@@ -188,7 +188,7 @@ Click on the `All Data` Button and this will display the documents that were pul
 
 ![All_Data.png](Screen_Shots%2FAll_Data.png)
 
-### 4.6. Check All Data:
+### 4.6. Logout:
 
 Once you are done with your session, simple click on the `Logout` Button on the top-left corner of the **navigation bar**. A Log Out button will appear to confirm the user's intention to logout.
 
