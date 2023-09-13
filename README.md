@@ -1,4 +1,4 @@
-# Capstone Option 1: Full-Stack Banking Application
+# Full-Stack Banking Application
 
 ![iStock-stock market.jpg](Screen_Shots%2FiStock-stock%20market.jpg)
 
