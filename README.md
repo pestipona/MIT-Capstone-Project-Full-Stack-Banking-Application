@@ -6,17 +6,24 @@
 
 ???
 
+---------------------------------------------------------------------------
+
 ## II. Installation Guidelines:
 
-This application is fully built, but To replicate this environment on your own follow the build steps outlined below.
+This is a **full-stack web application**. There are two ways to **install** this **application**, the **first-being** the simplest one which is to install this application on your **localhost** machine, and ignore any instructions regarding the cloud. The **second** is to deploy this application to a **Cloud Service Provider** such as via `AWS`, `Azure`, or `Google Cloud`.
 
-### 2.1. Frontend:
+### 2.1. Frontend & Backend (Web Server):
 
-For the **front-end authentication** I used Google's **Firebase** Authentication Service. I signed up for a Google Firebase account, and started by creating a project. Once I have the project setup, I then built the authentication service. To use the service I just imported the SDK and authentication library in my main `index.html` file, and copy-pasted my firebase configuration in my JavaScript file.
+To deploy to an AWS EC2 instance sign up for an AWS account, and navigate to EC2. Create and run an instance preferably the Amazon Linux AMI. Once that is running SSH into the instance and create a project folder, do a git clone to copy all the files or do it localy on your localhost machine. 
 
-### 2.2. Backend (Web Server):
+One of the requirements of the application is being able to use Google's **Firebase** Authentication Service. Sign up for a Google Firebase account, and start by creating a project. Once the project setup is complete, build the authentication service. To use the service just import the SDK and authentication library in the `index.html` file, and copy-pasted the firebase configuration in each JavaScript file.
 
-### 2.3. Mongo Database:
+Follow the steps in this detailed process [Building the Backend](/Docs/References/Building_The_Backend.md) for more information.
+
+* [Nginx Back-end Server Notes](/Docs/Backend/nginx_backend_server_notes.md)
+* [pm2 Back-end Server Notes](/Docs/Backend/pm2_Backend_Server_Notes.md)
+
+### 2.2. Mongo Database:
 
 To build the mongo database first deploy a Linux EC2 instance in AWS. Once this is deployed follow the next steps to setup the **EC2 instance** & **MongoDB**.
 
@@ -26,7 +33,9 @@ To build the mongo database first deploy a Linux EC2 instance in AWS. Once this 
 * **Create** a **mongo database** inside a **docker container** called `afcu-bank`
 * Install **mongodb** should be `version 3.6.2` for this exercise to work
 
-To get a more detailed list of steps with commands follow this detailed guide [Building the Database](/Docs/Building_The_Database.md). 
+To get a more detailed list of steps with commands follow this detailed guide [Building the Database](/Docs/References/Building_The_Database.md). 
+
+-------------------------------------------------------------------------------------
 
 ## III. Technology Used:
 
@@ -43,6 +52,8 @@ For **styling** the **web application**. I simply used a **styling framework** c
 #### 3.1.3. Front-end authentication:
 
 For the **front-end authentication** portion of the **web application**. I used **Google's Firebase Authentication Service**. This is a **free-tier service** where the only requirement is to have a **Google account**. This authentication service works by the **client** requesting for a **Jason Web Token (JWT)** from **Google Firebase** and once authenticated by Google, the **JWT** is passed and can be used to **authenticate** to the **back-end API routes** which are verified using **Firebase SDK** to ensure the request is coming from an **authenticated user**.
+
+![Client-Side_Authentication.jpg](Pics%2FClient-Side_Authentication.jpg)
 
 ### 3.2. Backend (Web Server):
 
@@ -62,6 +73,8 @@ Since I'm using Node.js I used `Node Package Manager (NPM)` to install, manage, 
 
 For **securing** the **API routes** in the **back-end**. The technology I used to build these authentication is `Google's Firebase Authentication Service`. This was used to secure the **API routes** from **unauthenticated users** by verifying their JSON web tokens that they pass from the front-end to the backend routes.
 
+![Server-Side_Authentication.jpg](Pics%2FServer-Side_Authentication.jpg)
+
 #### 3.2.5 Reverse Proxy:
 
 For my **reverse proxy** I used `Nginx` to forward requests to my **Node.js app**. This allows users to use the domain name instead of the AWS EC2 Instance IP Address & Port number, it also allows for management of HTTPS certificates more easily in the future.
@@ -76,9 +89,13 @@ For my process manager I used `PM2 (Process Manager 2)` this allows the **Node.j
 
 For the **data store** I used an image of **Mongo DB** that I deployed in a **Docker Container** hosted in an **AWS EC2 Instance**. I could have made this **more efficient** by just deploying the **container** itself without the **EC2 instance**, but since I did not have enough time to configure this. I went first with what I knew which was to deploy the **mongo database container** in an **AWS EC2 instance**. This guide proved helpful [How to connect to Mongodb on AWS EC2 instance with Robomongo?](https://setu677.medium.com/how-to-connect-to-mongodb-on-aws-ec2-instance-with-robomongo-b2977b8a112f).
 
+![MongoDB.jpg](Pics%2FMongoDB.jpg)
+
 #### 3.3.2. Containerization:
 
 To run my mongodb container, the **docker engine** I used was **Docker**. I installed Docker within my database server to run my mongodb container.
+
+![Docker_Hub.jpg](Pics%2FDocker_Hub.jpg)
 
 ### 3.4. Cloud Services:
 
@@ -89,6 +106,8 @@ For both my **web-server** and **database-server** I deployed both to the cloud 
 #### 3.4.2. AWS Route 53:
 
 I used `Amazon Route 53` for my Domain Name System (DNS) web service and for registering my domain armed-force-bank.com and subdomain www.armed-force-bank.com This cloud service routes incoming web traffic from the public internet to my Hosted Zone. I mapped my registered domain to my web-server's EC2 Instance IP Address, which Nginx will take care of the reverse web proxying.
+
+-------------------------------------------------------------------------------
 
 ## IV. Features:
 
