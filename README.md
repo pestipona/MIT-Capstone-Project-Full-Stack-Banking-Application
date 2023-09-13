@@ -44,8 +44,6 @@ For **styling** the **web application**. I simply used a **styling framework** c
 
 For the **front-end authentication** portion of the **web application**. I used **Google's Firebase Authentication Service**. This is a **free-tier service** where the only requirement is to have a **Google account**. This authentication service works by the **client** requesting for a **Jason Web Token (JWT)** from **Google Firebase** and once authenticated by Google, the **JWT** is passed and can be used to **authenticate** to the **back-end API routes** which are verified using **Firebase SDK** to ensure the request is coming from an **authenticated user**.
 
-For **user authentication** this consisted of two parts, the first being the **front-end authentication**, and the second part is the **server routes authentication** in the back-end. The technology I used to build both authentications is **Google's Firebase Authentication Service**.
-
 ### 3.2. Backend (Web Server):
 
 #### 3.2.1. Runtime Environment:
@@ -62,7 +60,15 @@ Since I'm using Node.js I used `Node Package Manager (NPM)` to install, manage, 
 
 #### 3.2.4. Server-Side Authentication:
 
-For **securing** the **API routes** in the **back-end**. The technology I used to build these authentication is **Google's Firebase Authentication Service**. This was used to secure the **API routes** from **unauthenticated users** by verifying their JSON web tokens that they pass from the front-end to the backend routes.
+For **securing** the **API routes** in the **back-end**. The technology I used to build these authentication is `Google's Firebase Authentication Service`. This was used to secure the **API routes** from **unauthenticated users** by verifying their JSON web tokens that they pass from the front-end to the backend routes.
+
+#### 3.2.5 Reverse Proxy:
+
+For my **reverse proxy** I used `Nginx` to forward requests to my **Node.js app**. This allows users to use the domain name instead of the AWS EC2 Instance IP Address & Port number, it also allows for management of HTTPS certificates more easily in the future.
+
+#### 3.2.6. Process Manager:
+
+For my process manager I used `PM2 (Process Manager 2)` this allows the **Node.js application** to run in the background continuously, enables it to start automatically on reboot, and offers logging and monitoring of the application.
 
 ### 3.3. Mongo Database:
 
@@ -74,9 +80,23 @@ For the **data store** I used an image of **Mongo DB** that I deployed in a **Do
 
 To run my mongodb container, the **docker engine** I used was **Docker**. I installed Docker within my database server to run my mongodb container.
 
+### 3.4. Cloud Services:
+
+#### 3.4.1. AWS EC2 Instances:
+
+For both my **web-server** and **database-server** I deployed both to the cloud by hosting them inside **AWS EC2 Instances**. For the **Amazon Machine Image (AMI)** which is basically a virtual machine I chose the free-tier OS which is **Amazon Linux**, and for its compute resources I chose the free tier CPU which is `t2.micro`, and RAM.
+
+#### 3.4.2. AWS Route 53:
+
+I used `Amazon Route 53` for my Domain Name System (DNS) web service and for registering my domain armed-force-bank.com and subdomain www.armed-force-bank.com This cloud service routes incoming web traffic from the public internet to my Hosted Zone. I mapped my registered domain to my web-server's EC2 Instance IP Address, which Nginx will take care of the reverse web proxying.
+
 ## IV. Features:
 
-### Using Studio 3T to Monitor MongoDB Container:
+### 4.1. Client-Side & Server Side Authentication:
+
+For **user authentication** this consisted of two parts, the first being the **front-end authentication**, and the second part is the **server routes authentication** in the back-end. This secures both the front-end of the web application as well as access to the API routes in the back-end.
+
+### 4.2. Using Studio 3T to Monitor MongoDB Container:
 
 The **mongo database** can be monitored **using a connection** via **port 27017** in **Studio 3T** to monitor the **database contents**.
 
