@@ -1,6 +1,9 @@
 // load all requirements
 const express = require('express');
 const app = express();
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 const cors = require('cors');
 const dal = require('./dal.js');
 const admin   = require('./admin');
@@ -8,6 +11,20 @@ const admin   = require('./admin');
 // used to serve static files from public directory
 app.use(express.static('public'));
 app.use(cors());
+
+// configure Restful API documentation using SwaggerDoc and SwaggerUI
+const swaggerOptions = {
+    swaggerDefinition : {
+        info: {
+            title: 'Library API',
+            version: '1.0.0'
+        }
+    },
+    apis: ['index.js']
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // Middleware to verify JWT token
 const verifyToken = (req, res, next) => {
@@ -30,7 +47,7 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-// open api endpoint (route) for creating a user account
+// open api endpoint (route) for creating a new user
 app.get('/account/create/:name/:email/:password/:balance', function (req, res) {
 
     // create user

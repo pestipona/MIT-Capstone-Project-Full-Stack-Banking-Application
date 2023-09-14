@@ -1,7 +1,5 @@
 # Capstone Option 1: Full-Stack Banking Application
 
-![MIT Emeritus.jpg](..%2FPics%2FMIT%20Emeritus.jpg)
-
 ## Choosing A Capstone Project:
 
 You can **choose** between **two options** for your **capstone project**:

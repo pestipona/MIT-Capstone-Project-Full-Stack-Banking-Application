@@ -4,7 +4,8 @@
   "description": "Full Stack Web Application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "paul_estipona@mit.edu",
   "license": "MIT",
@@ -14,6 +15,12 @@
     "firebase": "^10.3.1",
     "firebase-admin": "^11.10.1",
     "mongodb": "^3.6.2",
-    "ssh2": "^1.14.0"
+    "nodemon": "^3.0.1",
+    "ssh2": "^1.14.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "prettier": "2.1.2"
   }
 }
