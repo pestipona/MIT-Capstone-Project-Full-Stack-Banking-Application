@@ -5,14 +5,23 @@
     "version": "1.0.0",
     "description": "API Documentation for Armed Forces Credit Union (AFCU) Bank project"
   },
-  "host": "localhost:3000",
+  "host": "54.92.189.15:3000",
   "basePath": "/",
   "schemes": ["http"],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter your Firebase JWT token as 'Bearer [your token]'"
+    }
+  },
   "paths": {
     "/account/create/{name}/{email}/{password}/{balance}": {
       "get": {
         "tags": ["Account"],
         "summary": "Create a new user account",
+        "security": [{ "Bearer": [] }],
         "parameters": [
           { "name": "name", "in": "path", "required": true, "type": "string" },
           { "name": "email", "in": "path", "required": true, "type": "string" },
@@ -31,6 +40,7 @@
       "get": {
         "tags": ["Account"],
         "summary": "Log in to an account",
+        "security": [{ "Bearer": [] }],
         "parameters": [
           { "name": "email", "in": "path", "required": true, "type": "string" },
           { "name": "password", "in": "path", "required": true, "type": "string" }
@@ -47,6 +57,7 @@
       "get": {
         "tags": ["Account"],
         "summary": "Logout of an account",
+        "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
             "description": "Logged out successfully",
@@ -59,6 +70,7 @@
       "get": {
         "tags": ["Account"],
         "summary": "Get all accounts",
+        "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
             "description": "Accounts fetched successfully",
@@ -75,6 +87,7 @@
       "get": {
         "tags": ["Account"],
         "summary": "Deposit to an account",
+        "security": [{ "Bearer": [] }],
         "parameters": [
           { "name": "email", "in": "path", "required": true, "type": "string" },
           { "name": "amount", "in": "path", "required": true, "type": "number" }
@@ -92,6 +105,7 @@
       "get": {
         "tags": ["Account"],
         "summary": "Withdraw from an account",
+        "security": [{ "Bearer": [] }],
         "parameters": [
           { "name": "email", "in": "path", "required": true, "type": "string" },
           { "name": "amount", "in": "path", "required": true, "type": "number" }
@@ -109,6 +123,7 @@
       "get": {
         "tags": ["Account"],
         "summary": "Get balance of an account",
+        "security": [{ "Bearer": [] }],
         "parameters": [{ "name": "email", "in": "path", "required": true, "type": "string" }],
         "responses": {
           "200": {
