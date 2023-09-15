@@ -224,7 +224,7 @@ Aside from additional user information right now there are no **user roles** and
 
 ### 6.2. Backend (Web Server):
 
-For the **back-end server** I plan to deploy this next time in a different architecture such as a **serverless architecture** in **AWS**. Because right now it's currently deployed as a **Single Page Application (SPA)** stored inside an **AWS S3 Bucket**. 
+For the **back-end server** I plan to deploy this next time in a different architecture such as a **serverless architecture** in **AWS**. Because right now it's currently deployed as a **Single Page Application (SPA)** stored inside an **AWS EC2 instance**. 
 
 ### 6.3. Database:
 

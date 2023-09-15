@@ -12,6 +12,7 @@ const admin   = require('./admin');
 app.use(express.static('public'));
 app.use(cors());
 
+// Swagger UI Authorization for Testing
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument, {
     swaggerOptions: {
         authAction: {
@@ -59,25 +60,6 @@ app.get('/account/create/:name/:email/:password/:balance', function (req, res) {
         then((user) => {
             console.log(user);
             res.send(user);
-    });
-});
-
-// open api endpoint (route) for logging in existing user
-app.get('/account/login/:email/:password', function (req, res) {
-
-    res.send({
-        email:    req.params.email,
-        password: req.params.password
-    });
-});
-
-// secure api endpoint (route) to logout of authentication
-// This route is protected, and req.user contains the authenticated user's information
-app.get('/account/logout', function (req, res) {
-
-    res.send({
-        email:    req.params.email,
-        password: req.params.password
     });
 });
 

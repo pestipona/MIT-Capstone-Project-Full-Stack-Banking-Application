@@ -58,7 +58,6 @@ function LoginForm(props){
         firebase.auth().signInWithEmailAndPassword(String(email), String(password))
             .then((userCredential) => {
                 // Sign in successful, update the UI accordingly
-
                 props.setShow(false);
             })
             .catch((error) => {
