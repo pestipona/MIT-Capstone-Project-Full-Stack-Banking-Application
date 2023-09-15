@@ -63,6 +63,8 @@ function DepositForm(props){
         if(user) {
             // Get JWT
             user.getIdToken(true).then(async (idToken) => {
+                // print to console token for swaggerUI testing
+                console.log(idToken);
                 // Include the token in the request headers
                 const url = `/account/deposit/${email}/${amount}`;
                 try {

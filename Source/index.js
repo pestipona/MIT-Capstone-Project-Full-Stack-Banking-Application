@@ -11,7 +11,24 @@ const admin   = require('./admin');
 // used to serve static files from public directory
 app.use(express.static('public'));
 app.use(cors());
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument, {
+    swaggerOptions: {
+        authAction: {
+            Bearer: {
+                name: "Bearer",
+                schema: {
+                    type: "apiKey",
+                    in: "header",
+                    name: "Authorization",
+                    description: ""
+                },
+                value: "Bearer <JWT_TOKEN>"
+            }
+        }
+    }
+}));
+
 
 // Middleware to verify JWT token
 const verifyToken = (req, res, next) => {
