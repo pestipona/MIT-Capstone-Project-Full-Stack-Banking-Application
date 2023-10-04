@@ -1,4 +1,4 @@
-# Capstone 1 - Full-Stack Banking Application:
+# Capstone Project - Full-Stack Banking Application:
 
 ![iStock-stock market.jpg](Screen_Shots%2FiStock-stock%20market.jpg)
 
